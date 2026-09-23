@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Can You Be My Date? 💗</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Arial, sans-serif;
+
+      background: linear-gradient(
+        135deg,
+        #ffc1d9,
+        #ffe6f0,
+        #ffd1e3
+      );
+
+      overflow: hidden;
+    }
+
+
+    /* =================================
+       FLOATING HEARTS
+    ================================= */
+
+    .hearts {
+      position: fixed;
+
+      width: 100%;
+      height: 100%;
+
+      top: 0;
+      left: 0;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+      z-index: 1;
+    }
+
+
+    .heart-bg {
+      position: absolute;
+
+      bottom: -70px;
+
+      color: #ff5c91;
+
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+      opacity: 0;
+    }
+
+
+    .h1  { left: 3%;  font-size: 20px; animation-duration: 6s;  animation-delay: 0s; }
+    .h2  { left: 8%;  font-size: 35px; animation-duration: 9s;  animation-delay: 2s; }
+    .h3  { left: 13%; font-size: 18px; animation-duration: 7s;  animation-delay: 4s; }
+    .h4  { left: 18%; font-size: 28px; animation-duration: 11s; animation-delay: 1s; }
+    .h5  { left: 23%; font-size: 22px; animation-duration: 8s;  animation-delay: 3s; }
+    .h6  { left: 28%; font-size: 40px; animation-duration: 10s; animation-delay: 5s; }
+    .h7  { left: 33%; font-size: 18px; animation-duration: 6s;  animation-delay: 2s; }
+    .h8  { left: 38%; font-size: 30px; animation-duration: 9s;  animation-delay: 6s; }
+    .h9  { left: 43%; font-size: 20px; animation-duration: 7s;  animation-delay: 1s; }
+    .h10 { left: 48%; font-size: 36px; animation-duration: 12s; animation-delay: 4s; }
+
+    .h11 { left: 53%; font-size: 22px; animation-duration: 8s;  animation-delay: 0s; }
+    .h12 { left: 58%; font-size: 32px; animation-duration: 10s; animation-delay: 3s; }
+    .h13 { left: 63%; font-size: 18px; animation-duration: 6s;  animation-delay: 5s; }
+    .h14 { left: 68%; font-size: 40px; animation-duration: 11s; animation-delay: 2s; }
+    .h15 { left: 73%; font-size: 24px; animation-duration: 7s;  animation-delay: 4s; }
+    .h16 { left: 78%; font-size: 34px; animation-duration: 9s;  animation-delay: 1s; }
+    .h17 { left: 83%; font-size: 19px; animation-duration: 8s;  animation-delay: 6s; }
+    .h18 { left: 88%; font-size: 38px; animation-duration: 12s; animation-delay: 3s; }
+    .h19 { left: 93%; font-size: 21px; animation-duration: 7s;  animation-delay: 5s; }
+    .h20 { left: 97%; font-size: 30px; animation-duration: 10s; animation-delay: 0s; }
+
+
+    @keyframes floatUp {
+
+      0% {
+        transform:
+          translateY(0)
+          rotate(0deg)
+          scale(0.7);
+
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      50% {
+        transform:
+          translateY(-50vh)
+          rotate(180deg)
+          scale(1);
+      }
+
+      85% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform:
+          translateY(-115vh)
+          rotate(360deg)
+          scale(0.8);
+
+        opacity: 0;
+      }
+    }
+
+
+    /* =================================
+       MAIN CARD
+    ================================= */
+
+    .card {
+      position: relative;
+
+      z-index: 10;
+
+      width: 90%;
+      max-width: 450px;
+
+      padding: 45px 30px;
+
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      border-radius: 30px;
+
+      box-shadow:
+        0 15px 40px
+        rgba(255, 70, 130, 0.25);
+    }
+
+
+    /* =================================
+       HEART
+    ================================= */
+
+    .main-heart {
+      font-size: 70px;
+
+      animation:
+        heartbeat 1.2s infinite;
+    }
+
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+
+    /* =================================
+       TEXT
+    ================================= */
+
+    h1 {
+      color: #ff4780;
+
+      font-size: 30px;
+
+      margin: 15px 0;
+    }
+
+
+    p {
+      color: #777;
+
+      font-size: 17px;
+    }
+
+
+    /* =================================
+       BUTTONS
+    ================================= */
+
+    .buttons {
+      position: relative;
+
+      height: 130px;
+
+      margin-top: 25px;
+    }
+
+
+    button {
+      border: none;
+
+      padding: 14px 28px;
+
+      border-radius: 30px;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+
+    /* YES BUTTON */
+
+    #yes {
+      background: #ff4780;
+
+      color: white;
+
+      position: absolute;
+
+      left: 65px;
+      top: 30px;
+
+      transition: 0.2s;
+    }
+
+
+    #yes:hover {
+      transform: scale(1.1);
+
+      background: #ff286b;
+    }
+
+
+    /* NO BUTTON */
+
+    #no {
+      background: #eeeeee;
+
+      color: #555;
+
+      position: absolute;
+
+      left: 220px;
+      top: 30px;
+
+      transition:
+        left 0.2s ease,
+        top 0.2s ease;
+    }
+
+
+    /* =================================
+       YAY PAGE
+    ================================= */
+
+    #yayPage {
+      display: none;
+    }
+
+
+    .yay-heart {
+      font-size: 70px;
+
+      animation:
+        heartbeat 1s infinite;
+    }
+
+
+    .yay-title {
+      color: #ff4780;
+
+      font-size: 32px;
+    }
+
+
+    .yay-text {
+      color: #ff6f9f;
+
+      font-size: 22px;
+
+      font-weight: bold;
+    }
+
+
+    #continueButton {
+      margin-top: 20px;
+
+      background: #ff4780;
+
+      color: white;
+    }
+
+
+    #continueButton:hover {
+      transform: scale(1.05);
+
+      background: #ff286b;
+    }
+
+
+    /* =================================
+       SET DATE PAGE
+    ================================= */
+
+    #datePage {
+      display: none;
+    }
+
+
+    .date-heart {
+      font-size: 60px;
+    }
+
+
+    .date-title {
+      color: #ff4780;
+
+      font-size: 29px;
+    }
+
+
+    .date-subtitle {
+      color: #777;
+
+      margin-bottom: 20px;
+    }
+
+
+    .date-form {
+      text-align: left;
+    }
+
+
+    .date-form label {
+      display: block;
+
+      color: #ff4780;
+
+      font-weight: bold;
+
+      margin: 12px 0 6px;
+    }
+
+
+    .date-form input {
+      width: 100%;
+
+      padding: 13px;
+
+      border:
+        2px solid #ffd0df;
+
+      border-radius: 15px;
+
+      outline: none;
+
+      font-size: 16px;
+
+      background: #fff8fb;
+    }
+
+
+    .date-form input:focus {
+      border-color: #ff6f9f;
+    }
+
+
+    #confirmDate {
+      width: 100%;
+
+      margin-top: 22px;
+
+      background: #ff4780;
+
+      color: white;
+    }
+
+
+    #confirmDate:hover {
+      background: #ff286b;
+
+      transform: scale(1.02);
+    }
+
+
+    /* =================================
+       FINAL MESSAGE
+    ================================= */
+
+    #finalMessage {
+      display: none;
+
+      margin-top: 20px;
+
+      color: #ff4780;
+
+      font-size: 20px;
+
+      font-weight: bold;
+
+      line-height: 1.6;
+    }
+
+
+    .final-title {
+      font-size: 28px;
+
+      margin-bottom: 15px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =================================
+       FLOATING HEARTS
+  ================================= -->
+
+  <div class="hearts">
+
+<span class="heart-bg h1">♥</span>
+<span class="heart-bg h2">♡</span>
+<span class="heart-bg h3">♥</span>
+<span class="heart-bg h4">♡</span>
+<span class="heart-bg h5">♥</span>
+<span class="heart-bg h6">♡</span>
+<span class="heart-bg h7">♥</span>
+<span class="heart-bg h8">♡</span>
+<span class="heart-bg h9">♥</span>
+<span class="heart-bg h10">♡</span>
+
+<span class="heart-bg h11">♥</span>
+<span class="heart-bg h12">♡</span>
+<span class="heart-bg h13">♥</span>
+<span class="heart-bg h14">♡</span>
+<span class="heart-bg h15">♥</span>
+<span class="heart-bg h16">♡</span>
+<span class="heart-bg h17">♥</span>
+<span class="heart-bg h18">♡</span>
+<span class="heart-bg h19">♥</span>
+<span class="heart-bg h20">♡</span>
+
+  </div>
+
+  <!-- =================================
+       PAGE 1
+  ================================= -->
+
+  <div class="card" id="firstPage">
+
+<div class="main-heart">
+  💗
+</div>
+
+
+<h1>
+  Can you be my date?
+</h1>
+
+
+<p>
+  I have a little question for you... 🥺💕
+</p>
+
+
+<div class="buttons">
+
+  <button
+    id="yes"
+    onclick="sayYes()">
+
+    Yes! 💕
+
+  </button>
+
+
+  <button id="no">
+
+    No 😭
+
+  </button>
+
+</div>
+
+  </div>
+
+  <!-- =================================
+       PAGE 2 - YAY
+  ================================= -->
+
+  <div class="card" id="yayPage">
+
+<div class="yay-heart">
+  💕
+</div>
+
+
+<h1 class="yay-title">
+  YAYYYY!! 🥰💕
+</h1>
+
+
+<p class="yay-text">
+  It's a date! 🌷✨
+</p>
+
+
+<p>
+  I'm so happy you said yes! 🥺💗
+</p>
+
+
+<button
+  id="continueButton"
+  onclick="showDatePage()">
+
+  Set the Date! 📅💕
+
+</button>
+
+  </div>
+
+  <!-- =================================
+       PAGE 3 - SET THE DATE
+  ================================= -->
+
+  <div class="card" id="datePage">
+
+<div class="date-heart">
+  💕
+</div>
+
+
+<h1 class="date-title">
+  Set the Date? 📅
+</h1>
+
+
+<p class="date-subtitle">
+  Now let's plan our date! 🥰
+</p>
+
+
+<div class="date-form">
+
+
+  <label for="date">
+    📅 Pick a date
+  </label>
+
+
+  <input
+    type="date"
+    id="date">
+
+
+  <label for="time">
+    🕐 Pick a time
+  </label>
+
+
+  <input
+    type="time"
+    id="time">
+
+
+  <label for="place">
+    📍 Where should we go?
+  </label>
+
+
+  <input
+    type="text"
+    id="place"
+    placeholder="e.g. Coffee shop ☕">
+
+
+  <button
+    id="confirmDate"
+    onclick="confirmDate()">
+
+    Set the Date! 💗
+
+  </button>
+
+</div>
+
+
+<!-- FINAL MESSAGE -->
+
+<div id="finalMessage"></div>
+
+  </div>
+
+  <script>
+
+
+    /* =================================
+       GET ELEMENTS
+    ================================= */
+
+    const noButton =
+      document.getElementById("no");
+
+
+    const buttons =
+      document.querySelector(".buttons");
+
+
+    /* =================================
+       MOVE NO BUTTON
+    ================================= */
+
+    function moveNoButton() {
+
+      const maxX =
+        buttons.clientWidth -
+        noButton.offsetWidth;
+
+
+      const maxY =
+        buttons.clientHeight -
+        noButton.offsetHeight;
+
+
+      const randomX =
+        Math.max(
+          0,
+          Math.floor(
+            Math.random() * maxX
+          )
+        );
+
+
+      const randomY =
+        Math.max(
+          0,
+          Math.floor(
+            Math.random() * maxY
+          )
+        );
+
+
+      noButton.style.left =
+        randomX + "px";
+
+
+      noButton.style.top =
+        randomY + "px";
+
+    }
+
+
+    /* =================================
+       MOUSE DETECTION
+    ================================= */
+
+    document.addEventListener(
+      "mousemove",
+      function(event) {
+
+        /*
+          Only make the button run
+          while Page 1 is visible.
+        */
+
+        const firstPage =
+          document.getElementById(
+            "firstPage"
+          );
+
+
+        if (
+          firstPage.style.display === "none"
+        ) {
+          return;
+        }
+
+
+        const rect =
+          noButton.getBoundingClientRect();
+
+
+        const mouseX =
+          event.clientX;
+
+
+        const mouseY =
+          event.clientY;
+
+
+        const centerX =
+          rect.left +
+          rect.width / 2;
+
+
+        const centerY =
+          rect.top +
+          rect.height / 2;
+
+
+        const distanceX =
+          mouseX - centerX;
+
+
+        const distanceY =
+          mouseY - centerY;
+
+
+        const distance =
+          Math.sqrt(
+            distanceX * distanceX +
+            distanceY * distanceY
+          );
+
+
+        if (distance < 100) {
+
+          moveNoButton();
+
+        }
+
+      }
+    );
+
+
+    /* =================================
+       MOBILE / TOUCH
+    ================================= */
+
+    noButton.addEventListener(
+      "touchstart",
+      function(event) {
+
+        event.preventDefault();
+
+        moveNoButton();
+
+      }
+    );
+
+
+    /* =================================
+       YES BUTTON
+    ================================= */
+
+    function sayYes() {
+
+      document.getElementById(
+        "firstPage"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "yayPage"
+      ).style.display = "block";
+
+    }
+
+
+    /* =================================
+       SHOW SET DATE PAGE
+    ================================= */
+
+    function showDatePage() {
+
+      document.getElementById(
+        "yayPage"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "datePage"
+      ).style.display = "block";
+
+    }
+
+
+    /* =================================
+       CONFIRM DATE
+    ================================= */
+
+    function confirmDate() {
+
+      const date =
+        document.getElementById(
+          "date"
+        ).value;
+
+
+      const time =
+        document.getElementById(
+          "time"
+        ).value;
+
+
+      const place =
+        document.getElementById(
+          "place"
+        ).value;
+
+
+      /* Check if everything is filled */
+
+      if (
+        !date ||
+        !time ||
+        !place
+      ) {
+
+        alert(
+          "Please fill in everything first 💕"
+        );
+
+        return;
+      }
+
+
+      /* Get final message */
+
+      const finalMessage =
+        document.getElementById(
+          "finalMessage"
+        );
+
+
+      /* =================================
+         HIDE EVERYTHING FROM DATE PAGE
+      ================================= */
+
+      document.querySelector(
+        ".date-form"
+      ).style.display = "none";
+
+
+      document.querySelector(
+        ".date-title"
+      ).style.display = "none";
+
+
+      document.querySelector(
+        ".date-subtitle"
+      ).style.display = "none";
+
+
+      /* Change the heart */
+
+      document.querySelector(
+        ".date-heart"
+      ).innerHTML = "💖";
+
+
+      /* =================================
+         SHOW FINAL MESSAGE
+      ================================= */
+
+      finalMessage.style.display =
+        "block";
+
+
+      finalMessage.innerHTML =
+
+        "<div class='final-title'>" +
+        "IT'S OFFICIALLY A DATE! 🥰💕" +
+        "</div>" +
+
+        "📅 " + date + "<br>" +
+
+        "🕐 " + time + "<br>" +
+
+        "📍 " + place + "<br><br>" +
+
+        "Can't wait to see you! 🌷✨💗";
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+
+
+
